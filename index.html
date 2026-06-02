@@ -232,6 +232,47 @@
   }
 
   /* FOOTER */
+  .magnet-section { padding: 2rem 1.5rem; }
+  .magnet-inner {
+    border: 0.5px solid var(--border);
+    border-radius: 6px;
+    padding: 1.5rem;
+    background: var(--white);
+  }
+  .magnet-inner h3 {
+    font-family: var(--font-serif);
+    font-size: 17px;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 0.4rem;
+  }
+  .magnet-inner p { font-size: 13px; line-height: 1.65; color: var(--ink-mid); margin-bottom: 1rem; }
+  .magnet-form { display: flex; flex-direction: column; gap: 8px; }
+  .magnet-form input {
+    width: 100%;
+    padding: 11px 14px;
+    border: 0.5px solid rgba(26,26,26,0.18);
+    border-radius: 3px;
+    font-size: 13px;
+    font-family: var(--font-sans);
+    background: var(--bg);
+    color: var(--ink);
+  }
+  .magnet-form button {
+    width: 100%;
+    padding: 11px 14px;
+    background: var(--accent);
+    color: var(--bg);
+    border: none;
+    border-radius: 3px;
+    font-size: 13px;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    cursor: pointer;
+    letter-spacing: 0.02em;
+    transition: opacity 0.15s;
+  }
+  .magnet-form button:hover { opacity: 0.85; }
   .footer {
     padding: 1.5rem;
     border-top: 0.5px solid var(--border);
@@ -347,6 +388,45 @@
       <span class="series-price dim-p">Soon</span>
     </div>
   </section>
+
+  <div class="divider"></div>
+
+  <section class="magnet-section">
+    <div class="magnet-inner">
+      <p class="section-label">Free framework</p>
+      <h3>Get "Brief Better, Build Faster" - free</h3>
+      <p>The one-page framework that changes every AI interaction you have from this point forward. Enter your email and it downloads instantly.</p>
+      <div class="magnet-form" id="magnet-form-home">
+        <input type="email" id="magnet-email-home" placeholder="your@email.com" required>
+        <button type="button" onclick="handleMagnetHome()">Get it free</button>
+      </div>
+      <p id="magnet-msg-home" style="font-size:12px;color:#6B2737;margin-top:0.5rem;display:none;">Downloading now. Check your downloads folder.</p>
+    </div>
+  </section>
+
+  <script>
+  function handleMagnetHome() {
+    var email = document.getElementById('magnet-email-home').value;
+    if (!email || !email.includes('@')) {
+      document.getElementById('magnet-email-home').style.borderColor = '#6B2737';
+      return;
+    }
+    fetch('https://app.beehiiv.com/api/v1/publications/335415fb-8266-4e36-84bb-0e3bc1f23c75/subscriptions', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: email, reactivate_existing: true, send_welcome_email: true })
+    }).catch(function() {});
+    var a = document.createElement('a');
+    a.href = '/aktico-brief-better-build-faster.pdf';
+    a.download = 'Aktico-Brief-Better-Build-Faster.pdf';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    document.getElementById('magnet-msg-home').style.display = 'block';
+    document.getElementById('magnet-form-home').style.opacity = '0.5';
+    document.getElementById('magnet-form-home').style.pointerEvents = 'none';
+  }
+  </script>
 
   <div class="author-bar">
     <p>Built by Brandon, co-founder of <a href="https://surreal.live" target="_blank">Surreal</a>. $300M+ in bookings, 25,000+ contractors coordinated and counting. Frameworks earned through doing, not theory.</p>
