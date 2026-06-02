@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Aktico - A practical founder-led playbook series for turning ideas into execution using AI agents.">
+<title>Aktico - Turn ideas into execution using AI agents</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #F8F5F0;
+    --ink: #1A1A1A;
+    --ink-mid: #5F5E5A;
+    --ink-light: #888780;
+    --ink-faint: #B4B2A9;
+    --accent: #6B2737;
+    --surface: #EDE9E3;
+    --white: #ffffff;
+    --border: rgba(26,26,26,0.1);
+    --font-serif: 'Playfair Display', Georgia, serif;
+    --font-sans: 'DM Sans', system-ui, sans-serif;
+  }
+  html { font-size: 16px; -webkit-font-smoothing: antialiased; }
+  body { font-family: var(--font-sans); background: var(--bg); color: var(--ink); }
+  a { color: inherit; text-decoration: none; }
+  img { max-width: 100%; display: block; }
+
+  .site { max-width: 640px; margin: 0 auto; }
+
+  /* NAV */
+  .nav {
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 0.5px solid var(--border);
+    position: sticky;
+    top: 0;
+    background: var(--bg);
+    z-index: 100;
+  }
+  .nav-brand {
+    font-family: var(--font-serif);
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: -0.3px;
+    color: var(--ink);
+  }
+
+  /* HERO */
+  .hero { padding: 3rem 1.5rem 2.5rem; }
+  .eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 500;
+    margin-bottom: 1rem;
+  }
+  .hero h1 {
+    font-family: var(--font-serif);
+    font-size: 40px;
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -1px;
+    color: var(--ink);
+    margin-bottom: 1.25rem;
+  }
+  .hero h1 em { font-style: italic; color: var(--accent); }
+  .hero p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--ink-mid);
+    margin-bottom: 2rem;
+  }
+  .btn-primary {
+    display: block;
+    width: 100%;
+    padding: 14px 24px;
+    background: var(--ink);
+    color: var(--bg);
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 3px;
+    border: none;
+    cursor: pointer;
+    letter-spacing: 0.02em;
+    font-family: var(--font-sans);
+    text-align: center;
+    transition: background 0.15s;
+  }
+  .btn-primary:hover { background: #2C2C2A; }
+
+  /* DIVIDER */
+  .divider { height: 0.5px; background: var(--border); margin: 0 1.5rem; }
+
+  /* SECTION LABEL */
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    font-weight: 500;
+    margin-bottom: 1rem;
+  }
+
+  /* WHY SECTION */
+  .why { padding: 2.5rem 1.5rem; }
+  .why h2 {
+    font-family: var(--font-serif);
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1.25;
+    color: var(--ink);
+    margin-bottom: 0.6rem;
+  }
+  .why-intro {
+    font-size: 14px;
+    line-height: 1.75;
+    color: var(--ink-mid);
+    margin-bottom: 1.75rem;
+  }
+  .why-item {
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 10px;
+    padding: 1rem 0;
+    border-top: 0.5px solid rgba(26,26,26,0.08);
+  }
+  .why-item:last-child { border-bottom: 0.5px solid rgba(26,26,26,0.08); }
+  .why-num {
+    font-family: var(--font-serif);
+    font-size: 11px;
+    color: var(--accent);
+    font-weight: 500;
+    padding-top: 2px;
+  }
+  .why-body strong {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink);
+    display: block;
+    margin-bottom: 3px;
+  }
+  .why-body p { font-size: 13px; line-height: 1.65; color: var(--ink-light); }
+
+  /* TESTIMONIALS */
+  .testimonials { padding: 2.5rem 1.5rem; }
+  .testi-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  @media (max-width: 480px) { .testi-grid { grid-template-columns: 1fr; } }
+  .testi-card {
+    background: var(--white);
+    border: 0.5px solid var(--border);
+    border-radius: 6px;
+    padding: 1.1rem;
+  }
+  .testi-quote {
+    font-size: 13px;
+    line-height: 1.65;
+    color: #444441;
+    margin-bottom: 0.75rem;
+    font-style: italic;
+  }
+  .testi-name {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--accent);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  /* SERIES */
+  .series { padding: 2.5rem 1.5rem; }
+  .series-item {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 12px;
+    align-items: center;
+    padding: 0.9rem 0;
+    border-top: 0.5px solid rgba(26,26,26,0.08);
+    text-decoration: none;
+    color: inherit;
+  }
+  .series-item:last-child { border-bottom: 0.5px solid rgba(26,26,26,0.08); }
+  .series-item.live { cursor: pointer; }
+  .series-item.live:hover .series-title { color: var(--accent); }
+  .series-item.dim { opacity: 0.38; cursor: default; pointer-events: none; }
+  .series-v {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+  .series-v.dim-v { color: var(--ink-faint); }
+  .series-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 2px;
+    transition: color 0.15s;
+  }
+  .series-desc { font-size: 12px; color: var(--ink-light); line-height: 1.5; }
+  .series-price { font-size: 14px; font-weight: 500; color: var(--ink); white-space: nowrap; }
+  .series-price.dim-p {
+    font-size: 11px;
+    color: var(--ink-faint);
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .series-arrow { color: var(--accent); font-size: 16px; margin-left: 4px; }
+
+  /* AUTHOR BAR */
+  .author-bar {
+    padding: 1.5rem 1.5rem;
+    background: var(--surface);
+    border-top: 0.5px solid var(--border);
+  }
+  .author-bar p { font-size: 13px; line-height: 1.7; color: var(--ink-mid); }
+  .author-bar a {
+    color: var(--accent);
+    border-bottom: 0.5px solid rgba(107,39,55,0.4);
+  }
+
+  /* FOOTER */
+  .footer {
+    padding: 1.5rem;
+    border-top: 0.5px solid var(--border);
+    text-align: center;
+  }
+  .footer p { font-size: 11px; color: var(--ink-faint); letter-spacing: 0.04em; }
+</style>
+</head>
+<body>
+<div class="site">
+
+  <nav class="nav">
+    <a href="/" class="nav-brand">Aktico</a>
+  </nav>
+
+  <section class="hero">
+    <p class="eyebrow">Founder-led. Practically built.</p>
+    <h1>Turn ideas into<br><em>execution</em><br>using AI agents.</h1>
+    <p>A practical playbook series built by a founder who has done it. Frameworks earned through building a platform that has processed $300M+ in bookings and counting, now applied to AI-powered execution for builders at every stage.</p>
+    <a href="/foundation.html" class="btn-primary">Start with v1 - $7</a>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="why">
+    <p class="section-label">A fair question</p>
+    <h2>Why not just ask<br>AI directly?</h2>
+    <p class="why-intro">Honestly? You should. AI is an extraordinary teacher and this playbook was built using it, but there are three things you won't get from AI alone.</p>
+    <div class="why-item">
+      <span class="why-num">01</span>
+      <div class="why-body">
+        <strong>Frameworks earned by doing</strong>
+        <p>AI has read the textbook. I co-founded a company that has processed $300M+ in bookings across 25,000+ contractors and counting. Those patterns aren't in any training data. Until now.</p>
+      </div>
+    </div>
+    <div class="why-item">
+      <span class="why-num">02</span>
+      <div class="why-body">
+        <strong>The shortcut past the hard lessons</strong>
+        <p>AI gives you the standard answer. These playbooks give you the answer with a decade of wrong turns already accounted for. Your time is your most expensive asset.</p>
+      </div>
+    </div>
+    <div class="why-item">
+      <span class="why-num">03</span>
+      <div class="why-body">
+        <strong>A thinking partner, not a decision-maker</strong>
+        <p>These frameworks sharpen your critical thinking, not replace it. A reference point and a provocation. The call is always yours.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="testimonials">
+    <p class="section-label">What readers are saying</p>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <p class="testi-quote">"An awesome read. Very practical. Made me realise how accessible these tools really are. Would recommend. Looking forward to the next versions."</p>
+        <p class="testi-name">Ethan</p>
+      </div>
+      <div class="testi-card">
+        <p class="testi-quote">"Loved it. Rather than settling for first responses, I feel I know how I can truly work with AI now. I can still maintain my creativity too, which I love."</p>
+        <p class="testi-name">Tegan</p>
+      </div>
+      <div class="testi-card">
+        <p class="testi-quote">"I've been hesitant to try AI, as I felt it would be replacing me. Now I feel it can actually level me up, thanks to learnings from Aktico."</p>
+        <p class="testi-name">Cam</p>
+      </div>
+      <div class="testi-card">
+        <p class="testi-quote">"Can't recommend enough. Designing a website felt difficult enough, but now I've managed to design and create one live using tools I had never heard of."</p>
+        <p class="testi-name">Bianca</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="series">
+    <p class="section-label">The playbook series</p>
+    <a href="/foundation.html" class="series-item live">
+      <div>
+        <div class="series-v">v1</div>
+        <div class="series-title">Foundation playbook</div>
+        <div class="series-desc">From idea to executor. Ship something real in an afternoon.</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:4px;">
+        <span class="series-price">$7</span>
+        <span class="series-arrow">›</span>
+      </div>
+    </a>
+    <div class="series-item dim">
+      <div>
+        <div class="series-v dim-v">v2</div>
+        <div class="series-title">Practical workflows</div>
+        <div class="series-desc">Your first repeatable AI-powered workflow.</div>
+      </div>
+      <span class="series-price dim-p">Soon</span>
+    </div>
+    <div class="series-item dim">
+      <div>
+        <div class="series-v dim-v">v3</div>
+        <div class="series-title">Mastering AI</div>
+        <div class="series-desc">Set your tools up properly. The leverage point.</div>
+      </div>
+      <span class="series-price dim-p">Soon</span>
+    </div>
+    <div class="series-item dim">
+      <div>
+        <div class="series-v dim-v">v4</div>
+        <div class="series-title">Building your stack</div>
+        <div class="series-desc">Workflows, agents, the shape of an AI-leveraged operation.</div>
+      </div>
+      <span class="series-price dim-p">Soon</span>
+    </div>
+  </section>
+
+  <div class="author-bar">
+    <p>Built by Brandon, co-founder of <a href="https://surreal.live" target="_blank">Surreal</a>. $300M+ in bookings, 25,000+ contractors coordinated and counting. Frameworks earned through doing, not theory.</p>
+  </div>
+
+  <footer class="footer">
+    <p>Aktico - aktico.co</p>
+  </footer>
+
+</div>
+</body>
+</html>
