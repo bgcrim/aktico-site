@@ -413,8 +413,12 @@
       document.getElementById('magnet-email-home').style.borderColor = '#6B2737';
       return;
     }
-    document.getElementById('beehiiv-email-home').value = email;
-    document.getElementById('beehiiv-form-home').submit();
+    fetch('https://script.google.com/macros/s/AKfycbwdMZopKe241XsL6VDb2Gvhe324axMMavFHhqjLpNjbI1FWp8oHpxDzshe6k6xKYNs/exec', {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: email, source: 'homepage' })
+    }).catch(function() {});
     var a = document.createElement('a');
     a.href = '/aktico-brief-better-build-faster.pdf';
     a.download = 'Aktico-Brief-Better-Build-Faster.pdf';
