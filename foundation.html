@@ -405,6 +405,12 @@
         <button type="button" onclick="handleMagnet()">Get it free</button>
       </div>
       <p id="magnet-msg" style="font-size:12px;color:#6B2737;margin-top:0.5rem;display:none;">Downloading now. Check your downloads folder.</p>
+      <iframe name="beehiiv-foundation" style="display:none;"></iframe>
+      <form id="beehiiv-form-foundation" action="https://embeds.beehiiv.com/api/v1/forms/335415fb-8266-4e36-84bb-0e3bc1f23c75/subscribe" method="POST" target="beehiiv-foundation" style="display:none;">
+        <input type="email" name="email" id="beehiiv-email-foundation">
+        <input type="hidden" name="reactivate_existing" value="true">
+        <input type="hidden" name="utm_source" value="aktico-foundation">
+      </form>
     </div>
   </section>
 
@@ -416,10 +422,11 @@
       return;
     }
     // Submit to Beehiiv in background
-    fetch('https://app.beehiiv.com/api/v1/publications/335415fb-8266-4e36-84bb-0e3bc1f23c75/subscriptions', {
+    fetch('https://app.beehiiv.com/api/v2/publications/335415fb-8266-4e36-84bb-0e3bc1f23c75/subscriptions', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email: email, reactivate_existing: true, send_welcome_email: true })
+      body: JSON.stringify({ email: email, reactivate_existing: true, send_welcome_email: true }),
+      mode: 'no-cors'
     }).catch(function() {});
     // Trigger immediate download
     var a = document.createElement('a');

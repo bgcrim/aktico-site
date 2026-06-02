@@ -401,6 +401,12 @@
         <button type="button" onclick="handleMagnetHome()">Get it free</button>
       </div>
       <p id="magnet-msg-home" style="font-size:12px;color:#6B2737;margin-top:0.5rem;display:none;">Downloading now. Check your downloads folder.</p>
+      <iframe name="beehiiv-home" style="display:none;"></iframe>
+      <form id="beehiiv-form-home" action="https://embeds.beehiiv.com/api/v1/forms/335415fb-8266-4e36-84bb-0e3bc1f23c75/subscribe" method="POST" target="beehiiv-home" style="display:none;">
+        <input type="email" name="email" id="beehiiv-email-home">
+        <input type="hidden" name="reactivate_existing" value="true">
+        <input type="hidden" name="utm_source" value="aktico-homepage">
+      </form>
     </div>
   </section>
 
@@ -411,11 +417,8 @@
       document.getElementById('magnet-email-home').style.borderColor = '#6B2737';
       return;
     }
-    fetch('https://app.beehiiv.com/api/v1/publications/335415fb-8266-4e36-84bb-0e3bc1f23c75/subscriptions', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email: email, reactivate_existing: true, send_welcome_email: true })
-    }).catch(function() {});
+    document.getElementById('beehiiv-email-home').value = email;
+    document.getElementById('beehiiv-form-home').submit();
     var a = document.createElement('a');
     a.href = '/aktico-brief-better-build-faster.pdf';
     a.download = 'Aktico-Brief-Better-Build-Faster.pdf';
