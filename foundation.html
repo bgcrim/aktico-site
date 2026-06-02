@@ -412,12 +412,24 @@
   </section>
 
   <script>
-  function handleMagnet() {
+    function handleMagnet() {
     var email = document.getElementById('magnet-email').value;
     if (!email || !email.includes('@')) {
       document.getElementById('magnet-email').style.borderColor = '#6B2737';
       return;
     }
+    var img = new Image();
+    img.src = 'https://script.google.com/macros/s/AKfycbwdMZopKe241XsL6VDb2Gvhe324axMMavFHhqjLpNjbI1FWp8oHpxDzshe6k6xKYNs/exec?email=' + encodeURIComponent(email) + '&source=foundation-page';
+    var a = document.createElement('a');
+    a.href = '/aktico-brief-better-build-faster.pdf';
+    a.download = 'Aktico-Brief-Better-Build-Faster.pdf';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    document.getElementById('magnet-msg').style.display = 'block';
+    document.getElementById('magnet-form').style.opacity = '0.5';
+    document.getElementById('magnet-form').style.pointerEvents = 'none';
+  }
     // Submit to Beehiiv in background
     fetch('https://script.google.com/macros/s/AKfycbwdMZopKe241XsL6VDb2Gvhe324axMMavFHhqjLpNjbI1FWp8oHpxDzshe6k6xKYNs/exec', {
       method: 'POST',
