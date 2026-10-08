@@ -3,11 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Aktico - A practical founder-led playbook series for turning ideas into execution using AI agents.">
-<title>Aktico - Turn ideas into execution using AI agents</title>
-<link rel="icon" type="image/svg+xml" href="/favicon.svg">
-<link rel="icon" type="image/x-icon" href="/favicon.ico">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="description" content="Aktico - A practical, founder-led playbook series for turning ideas into execution using AI.">
+<title>Aktico - Turn ideas into execution using AI</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
@@ -235,47 +232,6 @@
   }
 
   /* FOOTER */
-  .magnet-section { padding: 2rem 1.5rem; }
-  .magnet-inner {
-    border: 0.5px solid var(--border);
-    border-radius: 6px;
-    padding: 1.5rem;
-    background: var(--white);
-  }
-  .magnet-inner h3 {
-    font-family: var(--font-serif);
-    font-size: 17px;
-    font-weight: 400;
-    color: var(--ink);
-    margin-bottom: 0.4rem;
-  }
-  .magnet-inner p { font-size: 13px; line-height: 1.65; color: var(--ink-mid); margin-bottom: 1rem; }
-  .magnet-form { display: flex; flex-direction: column; gap: 8px; }
-  .magnet-form input {
-    width: 100%;
-    padding: 11px 14px;
-    border: 0.5px solid rgba(26,26,26,0.18);
-    border-radius: 3px;
-    font-size: 13px;
-    font-family: var(--font-sans);
-    background: var(--bg);
-    color: var(--ink);
-  }
-  .magnet-form button {
-    width: 100%;
-    padding: 11px 14px;
-    background: var(--accent);
-    color: var(--bg);
-    border: none;
-    border-radius: 3px;
-    font-size: 13px;
-    font-family: var(--font-sans);
-    font-weight: 500;
-    cursor: pointer;
-    letter-spacing: 0.02em;
-    transition: opacity 0.15s;
-  }
-  .magnet-form button:hover { opacity: 0.85; }
   .footer {
     padding: 1.5rem;
     border-top: 0.5px solid var(--border);
@@ -293,8 +249,8 @@
 
   <section class="hero">
     <p class="eyebrow">Founder-led. Practically built.</p>
-    <h1>Turn ideas into<br><em>execution</em><br>using AI agents.</h1>
-    <p>A practical playbook series built by a founder who has done it. Frameworks earned through building a platform that has processed $300M+ in bookings and counting, now applied to AI-powered execution for builders at every stage.</p>
+    <h1>Turn ideas into<br><em>execution</em><br>using AI.</h1>
+    <p>A practical playbook series built by a founder who has done it. Frameworks earned through building a platform that has processed $500M+ in bookings and counting, now applied to AI-powered execution for builders at every stage.</p>
     <a href="/foundation.html" class="btn-primary">Start with v1 - $7</a>
   </section>
 
@@ -308,7 +264,7 @@
       <span class="why-num">01</span>
       <div class="why-body">
         <strong>Frameworks earned by doing</strong>
-        <p>AI has read the textbook. I co-founded a company that has processed $300M+ in bookings across 25,000+ contractors and counting. Those patterns aren't in any training data. Until now.</p>
+        <p>AI has read the textbook. I co-founded a company that has processed $500M+ in bookings across 28,000+ contractors and counting. Those patterns aren't in any training data. Until now.</p>
       </div>
     </div>
     <div class="why-item">
@@ -359,21 +315,24 @@
       <div>
         <div class="series-v">v1</div>
         <div class="series-title">Foundation playbook</div>
-        <div class="series-desc">From idea to executor. Ship something real in an afternoon.</div>
+        <div class="series-desc">From idea to executor. Ship something real, then make it better.</div>
       </div>
       <div style="display:flex;align-items:center;gap:4px;">
         <span class="series-price">$7</span>
         <span class="series-arrow">›</span>
       </div>
     </a>
-    <div class="series-item dim">
+    <a href="/workflows.html" class="series-item live">
       <div>
-        <div class="series-v dim-v">v2</div>
+        <div class="series-v">v2</div>
         <div class="series-title">Practical workflows</div>
-        <div class="series-desc">Your first repeatable AI-powered workflow.</div>
+        <div class="series-desc">Run it once. Then run it again. Your first repeatable AI-powered workflow.</div>
       </div>
-      <span class="series-price dim-p">Soon</span>
-    </div>
+      <div style="display:flex;align-items:center;gap:4px;">
+        <span class="series-price">$9</span>
+        <span class="series-arrow">›</span>
+      </div>
+    </a>
     <div class="series-item dim">
       <div>
         <div class="series-v dim-v">v3</div>
@@ -392,51 +351,8 @@
     </div>
   </section>
 
-  <div class="divider"></div>
-
-  <section class="magnet-section">
-    <div class="magnet-inner">
-      <p class="section-label">Free framework</p>
-      <h3>Get "Brief Better, Build Faster" - free</h3>
-      <p>The one-page framework that changes every AI interaction you have from this point forward. Enter your email and it downloads instantly.</p>
-      <div class="magnet-form" id="magnet-form-home">
-        <input type="email" id="magnet-email-home" placeholder="your@email.com" required>
-        <button type="button" onclick="handleMagnetHome()">Get it free</button>
-      </div>
-      <p id="magnet-msg-home" style="font-size:12px;color:#6B2737;margin-top:0.5rem;display:none;">Downloading now. Check your downloads folder.</p>
-    </div>
-  </section>
-
-  <script>
-  function handleMagnetHome() {
-    var email = document.getElementById('magnet-email-home').value;
-    if (!email || !email.includes('@')) {
-      document.getElementById('magnet-email-home').style.borderColor = '#6B2737';
-      return;
-    }
-    document.getElementById('magnet-msg-home').style.display = 'block';
-    document.getElementById('magnet-form-home').style.opacity = '0.5';
-    document.getElementById('magnet-form-home').style.pointerEvents = 'none';
-    fetch('https://script.google.com/macros/s/AKfycbwdMZopKe241XsL6VDb2Gvhe324axMMavFHhqjLpNjbI1FWp8oHpxDzshe6k6xKYNs/exec', {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email: email, source: 'homepage' })
-    }).finally(function() {
-      setTimeout(function() {
-        var a = document.createElement('a');
-        a.href = '/aktico-brief-better-build-faster.pdf';
-        a.download = 'Aktico-Brief-Better-Build-Faster.pdf';
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-      }, 300);
-    });
-  }
-  </script>
-
   <div class="author-bar">
-    <p>Built by Brandon, co-founder of <a href="https://surreal.live" target="_blank">Surreal</a>. $300M+ in bookings, 25,000+ contractors coordinated and counting. Frameworks earned through doing, not theory.</p>
+    <p>Built by Brandon, co-founder of <a href="https://surreal.live/" target="_blank">Surreal</a>. $500M+ in bookings, 28,000+ contractors coordinated and counting.</p>
   </div>
 
   <footer class="footer">
